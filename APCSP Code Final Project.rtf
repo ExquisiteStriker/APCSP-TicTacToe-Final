@@ -1,0 +1,130 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 print("Welcome to Tic Tac Toe!")\
+board = []\
+final_value = True\
+\
+\
+\
+dash = "-"\
+count = 0\
+board1 = [dash , dash , dash] #Here are my arrays. I later change the variable "dash" into the pieces such as X and O.\
+board2 = [dash , dash , dash] #I store information here\
+board3 = [dash , dash , dash]\
+print("    1    2    3")\
+print("1 " + str(board1))\
+print("2 " + str(board2))\
+print("3 " + str(board3))\
+player = "X"\
+player2 = "O"\
+\
+def is_valid_move_row(): #Here is a working function that contributes to my code\
+    while True: #Here is where I used a While loop to get the user for the rows.\
+        try:\
+            value = int(input("Enter a row: ")) #Here is where I asked the user for input.\
+            if value > 3 or value <=0:\
+                print("Please enter a valid move")\
+            \
+            else:\
+                return value - 1 #This is a return value taht gives the row position after the valid posiition\
+        except ValueError:\
+            print("Please enter a valid move ")\
+\
+def is_valid_move_colum(): #Here is a working function that contributes to my code\
+    while True: #Here is where I used a While loop to get the user for the colums.\
+        try:\
+            value = int(input("Enter a colum: ")) #Here is where I asked the user for input.\
+            if value > 3 or value <= 0:\
+                print("Please enter a valid move")\
+            else:\
+                return value - 1\
+        except ValueError:\
+            print("Please enter a valid move")\
+    \
+\
+def place_player(row, col): #Here are my two useful paramaters. The "row" and "col" paramater are derived form two previous functions that give me the row position and the colum position. With this, I later place the players\
+    if count %2 == 0:\
+        if row == 0:\
+            board1[col] = player\
+        if row == 1:\
+            board2[col] = player\
+        if row == 2:\
+            board3[col] = player\
+    else:\
+        if row == 0:\
+            board1[col] = player2\
+        if row == 1:\
+            board2[col] = player2\
+        if row == 2:\
+            board3[col] = player2\
+    \
+    return "    1    2    3\\n1 " + str(board1) + "\\n2 " + str(board2) + "\\n3 " + str(board3)\
+\
+    \
+        \
+    \
+while True: #Here is another while loop to check for game over and also for placing the player\
+    print(place_player(is_valid_move_row(), is_valid_move_colum())) #Here is where I had my paramaters in the "place_player function."\
+    count = count + 1\
+    #rows x\
+    if board1[0] == player and board1[1] == player and board1[2] == player:\
+        print("Game over! X wins this game.")\
+        break;\
+    elif board2[0] == player and board2[1] == player and board2[2] == player:\
+        print("Game over! X wins this game.")\
+        break;\
+    elif board3[0] == player and board3[1] == player and board3[2] == player:\
+        print("Game over! X wins this game.")\
+        break;\
+    #rows o\
+    elif board1[0] == player2 and board1[1] == player2 and board1[2] == player2:\
+        print("Game over! O wins this game.")\
+        break;\
+    elif board2[0] == player2 and board2[1] == player2 and board2[2] == player2:\
+        print("Game over! O wins this game.")\
+        break;\
+    elif board3[0] == player2 and board3[1] == player2 and board3[2] == player2:\
+        print("Game over! O wins this game.")\
+        break;\
+    #colums x\
+    elif board1[0] == player and board2[0] == player and board3[0] == player:\
+        print("Game over! X wins this game.")\
+        break;\
+    elif board1[1] == player and board2[1] == player and board3[1] == player:\
+        print("Game over! X wins this game.")\
+        break;\
+    elif board1[2] == player and board2[2] == player and board3[2] == player:\
+        print("Game over! X wins this game.")\
+        break;\
+    #colums o\
+    elif board1[0] == player2 and board2[0] == player2 and board3[0] == player2:\
+        print("Game over! O wins this game.")\
+        break;\
+    elif board1[1] == player2 and board2[1] == player2 and board3[1] == player2:\
+        print("Game over! O wins this game.")\
+        break;\
+    elif board1[2] == player2 and board2[2] == player2 and board3[2] == player2:\
+        print("Game over! O wins this game.!")\
+        break;\
+    #diagonals x\
+    elif board1[0] == player and board2[1] == player and board3[2]== player:\
+        print("Game over! X wins this game.")\
+        break;\
+    elif board1[2] == player and board2[1] == player and board3[0] == player:\
+        print("Game over! X wins this game.")\
+        break;\
+    #diagonals o\
+    elif board1[0] == player2 and board2[1] == player2 and board3[2]== player2:\
+        print("Game over! O wins this game.")\
+        break;\
+    elif board1[2] == player2 and board2[1] == player2 and board3[0] == player2:\
+        print("Game over! O wins this game.")\
+        break;\
+    elif count > 8:\
+        print("Its a tie!")\
+        break;}
